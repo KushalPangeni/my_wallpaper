@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nature_wallpaper/homepage.dart';
+import 'package:nature_wallpaper/main2.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const Homepage(),
+      home: const MainPage(),
     );
   }
 }

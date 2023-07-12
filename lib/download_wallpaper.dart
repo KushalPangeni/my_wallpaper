@@ -30,18 +30,14 @@ class _DownloadWallpaperState extends State<DownloadWallpaper> {
             children: [
               Container(
                 clipBehavior: Clip.values[0],
-                decoration: BoxDecoration(
-                    color: Colors.teal[50],
-                    borderRadius: BorderRadius.circular(14)),
+                decoration: BoxDecoration(color: Colors.teal[50], borderRadius: BorderRadius.circular(14)),
                 height: MediaQuery.of(context).size.height * 0.75,
                 width: MediaQuery.of(context).size.width,
                 child: CachedNetworkImage(
                   imageUrl: widget.imagepath,
                   fit: BoxFit.cover,
                   progressIndicatorBuilder: (context, url, downloadProgress) =>
-                      Center(
-                          child: CircularProgressIndicator(
-                              value: downloadProgress.progress)),
+                      Center(child: CircularProgressIndicator(value: downloadProgress.progress)),
                   errorWidget: (context, url, error) => const Icon(Icons.error),
                 ),
               ),
@@ -54,9 +50,7 @@ class _DownloadWallpaperState extends State<DownloadWallpaper> {
                       child: Container(
                         height: 45,
                         width: MediaQuery.of(context).size.width / 2,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(6),
-                            color: Colors.deepPurple),
+                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(6), color: Colors.deepPurple),
                         child: ElevatedButton(
                           onPressed: () async {
                             log("Set as wallpaper");
@@ -64,10 +58,7 @@ class _DownloadWallpaperState extends State<DownloadWallpaper> {
                           },
                           child: const Text(
                             "Set wallpaper",
-                            style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.white),
+                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: Colors.white),
                           ),
                         ),
                       ),
@@ -79,9 +70,7 @@ class _DownloadWallpaperState extends State<DownloadWallpaper> {
                       child: Container(
                         height: 45,
                         width: MediaQuery.of(context).size.width / 2,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(6),
-                            color: Colors.deepPurple),
+                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(6), color: Colors.deepPurple),
                         child: ElevatedButton(
                           onPressed: () async {
                             log("Download");
@@ -93,21 +82,16 @@ class _DownloadWallpaperState extends State<DownloadWallpaper> {
                               path,
                               onReceiveProgress: ((recievedBytes, totalBytes) {
                                 setState(() {
-                                  progress =
-                                      ((recievedBytes / totalBytes) * 100);
+                                  progress = ((recievedBytes / totalBytes) * 100);
                                 });
                               }),
                             );
-                            await GallerySaver.saveImage(path,
-                                albumName: "Wallpaper");
+                            await GallerySaver.saveImage(path, albumName: "Wallpaper");
                             await Future.delayed(const Duration(seconds: 1));
                           },
                           child: const Text(
                             "Download",
-                            style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.white),
+                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: Colors.white),
                           ),
                         ),
                       ),
@@ -145,13 +129,10 @@ class _DownloadWallpaperState extends State<DownloadWallpaper> {
                   // Perform action when music is pressed
                   int location = WallpaperManagerFlutter.HOME_SCREEN;
                   int location2 = WallpaperManagerFlutter.LOCK_SCREEN;
-                  var file = await DefaultCacheManager()
-                      .getSingleFile(widget.imagepath);
+                  var file = await DefaultCacheManager().getSingleFile(widget.imagepath);
                   log(file.toString());
-                  await WallpaperManagerFlutter()
-                      .setwallpaperfromFile(file, location);
-                  await WallpaperManagerFlutter()
-                      .setwallpaperfromFile(file, location2);
+                  await WallpaperManagerFlutter().setwallpaperfromFile(file, location);
+                  await WallpaperManagerFlutter().setwallpaperfromFile(file, location2);
                   await Future.delayed(const Duration(seconds: 1));
                   Navigator.pop(context);
                 },
@@ -162,11 +143,9 @@ class _DownloadWallpaperState extends State<DownloadWallpaper> {
                 onTap: () async {
                   // Perform action when photos is pressed
                   int location = WallpaperManagerFlutter.HOME_SCREEN;
-                  var file = await DefaultCacheManager()
-                      .getSingleFile(widget.imagepath);
+                  var file = await DefaultCacheManager().getSingleFile(widget.imagepath);
                   log(file.toString());
-                  await WallpaperManagerFlutter()
-                      .setwallpaperfromFile(file, location);
+                  await WallpaperManagerFlutter().setwallpaperfromFile(file, location);
                   await Future.delayed(const Duration(seconds: 1));
                   Navigator.pop(context);
                 },
@@ -177,11 +156,9 @@ class _DownloadWallpaperState extends State<DownloadWallpaper> {
                 onTap: () async {
                   // Perform action when videos is pressed
                   int location = WallpaperManagerFlutter.LOCK_SCREEN;
-                  var file = await DefaultCacheManager()
-                      .getSingleFile(widget.imagepath);
+                  var file = await DefaultCacheManager().getSingleFile(widget.imagepath);
                   log(file.toString());
-                  await WallpaperManagerFlutter()
-                      .setwallpaperfromFile(file, location);
+                  await WallpaperManagerFlutter().setwallpaperfromFile(file, location);
                   await Future.delayed(const Duration(seconds: 1));
                   Navigator.pop(context);
                 },
